@@ -31,29 +31,39 @@
     <div class="card bg-dark text-white" id="splash">
         <img class="card-img" src="./img/splash.jpg">
         <div class="card-img-overlay">
-            <br>
-            <h3 class="card-title">Project Overview and Motivation</h3>
-            <br>
-            <p class="card-text">Cillum nisi deserunt magna eiusmod qui eiusmod velit voluptate pariatur laborum sunt enim. Irure laboris mollit
-                consequat incididunt sint et culpa culpa incididunt adipisicing magna magna occaecat. Nulla ipsum cillum eiusmod sint elit
-                excepteur ea labore enim consectetur in labore anim. Proident ullamco ipsum esse elit ut Lorem eiusmod dolor et eiusmod.
-                Anim occaecat nulla in non consequat eiusmod velit incididunt</p>
-            <p class="card-text">Cillum nisi deserunt magna eiusmod qui eiusmod velit voluptate pariatur laborum sunt enim. Irure laboris mollit
-                consequat incididunt sint et culpa culpa incididunt adipisicing magna magna occaecat. Nulla ipsum cillum eiusmod sint elit
-                excepteur ea labore enim consectetur in labore anim. Proident ullamco ipsum esse elit ut Lorem eiusmod dolor et eiusmod.
-                Anim occaecat nulla in non consequat eiusmod velit incididunt</p>
+            <div class="card-text">
+                <p>We all have this moment. <br><br>
+                    Imagine - when you stand in front of the wine aisle of a store, you feel literally overwhelmed.<br>
+                    The label on the bottle is very informative, and often too informative to wine novice - cuz nothing really makes sense!</p>
+                <p id="key">
+                    Should I pick a wine based on its price, brand, variety, rating, region, year, or even more confusingly complex attributes,
+                    like acidity, sweetness, bodiness, aromas and colors?
+                </p>
+                <p>Although a bunch of wine selection guidance is out there, wine preference is so subjective.<br><br>
+                    The best way to know whether you like the wine or not is to taste it yourself.
+                </p>
+            </div>
         </div>
     </div>
 </div>
-<div data-spy="scroll" data-target="#" data-offset="0" id="contentPart">
+<div data-spy="scroll" data-target="#" data-offset="0" id="main">
     <div class="container-fluid" id="bg">
         <h3>Background</h3>
         <br>
-        <p>
-            Cillum nisi deserunt magna eiusmod qui eiusmod velit voluptate pariatur laborum sunt enim. Irure laboris mollit
-            consequat incididunt sint et culpa culpa incididunt adipisicing magna magna occaecat. Nulla ipsum cillum eiusmod sint elit
-            excepteur ea labore enim consectetur in labore anim. Proident ullamco ipsum esse elit ut Lorem eiusmod dolor et eiusmod.
-            Anim occaecat nulla in non consequat eiusmod velit incididunt. <br>
+        <div class="row">
+            <div class="col-5 offset-1">
+                <img src="img/user_viz.png" width="80%">
+            </div>
+            <div class="col-5">
+                <p id="user_content">
+                    For people in their 20s, they face a steep learning curve of wines, but they are also most curious to explore and learn.
+                    We want to help them navigate the world of wines more easily, based on their preference of flavors to instantly associate.
+                    In this process, the 20s can pick a few varieties of wines that are both affordable and high-rated, and when tasting by themselves,
+                    they can know about the wines and feel what truly appeals to them.
+                    <br>
+                </p>
+            </div>
+        </div>
     </div>
 
     <br>
@@ -180,6 +190,7 @@
     </nav>
 </div>
 <script>
+    //const img_path = "http://localhost/Wine/img/";
     const img_path = "https://yinan-chen.github.io/wineproject/img/";
     const flavors = {
       "White": ["Citrus Fruit","Floral","Herbal","Honey","Cream"],
@@ -239,6 +250,7 @@
                 }else{
                     //clean before
                     definition.html("");
+                    viz.html("");
                     flavor_count = 0;
                     let first = $("#"+flavors_select.first);
                     let second = $("#"+flavors_select.second);
