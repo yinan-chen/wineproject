@@ -1,1 +1,277 @@
-<h1>Hello!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wine Project</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="wineStyle.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+<div class="container-fluid" id="header">
+    <nav id="navScrollControl" class="navbar fixed-top navbar-light bg-light">
+        <a class="navbar-brand" href="#">Wine Project</a>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="#bg">Background</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#flavor">Flavor Exploration</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#recommend">Recommendation</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="card bg-dark text-white" id="splash">
+        <img class="card-img" src="./img/splash.jpg">
+        <div class="card-img-overlay">
+            <br>
+            <h3 class="card-title">Project Overview and Motivation</h3>
+            <br>
+            <p class="card-text">Cillum nisi deserunt magna eiusmod qui eiusmod velit voluptate pariatur laborum sunt enim. Irure laboris mollit
+                consequat incididunt sint et culpa culpa incididunt adipisicing magna magna occaecat. Nulla ipsum cillum eiusmod sint elit
+                excepteur ea labore enim consectetur in labore anim. Proident ullamco ipsum esse elit ut Lorem eiusmod dolor et eiusmod.
+                Anim occaecat nulla in non consequat eiusmod velit incididunt</p>
+            <p class="card-text">Cillum nisi deserunt magna eiusmod qui eiusmod velit voluptate pariatur laborum sunt enim. Irure laboris mollit
+                consequat incididunt sint et culpa culpa incididunt adipisicing magna magna occaecat. Nulla ipsum cillum eiusmod sint elit
+                excepteur ea labore enim consectetur in labore anim. Proident ullamco ipsum esse elit ut Lorem eiusmod dolor et eiusmod.
+                Anim occaecat nulla in non consequat eiusmod velit incididunt</p>
+        </div>
+    </div>
+</div>
+<div data-spy="scroll" data-target="#" data-offset="0" id="contentPart">
+    <div class="container-fluid" id="bg">
+        <h3>Background</h3>
+        <br>
+        <p>
+            Cillum nisi deserunt magna eiusmod qui eiusmod velit voluptate pariatur laborum sunt enim. Irure laboris mollit
+            consequat incididunt sint et culpa culpa incididunt adipisicing magna magna occaecat. Nulla ipsum cillum eiusmod sint elit
+            excepteur ea labore enim consectetur in labore anim. Proident ullamco ipsum esse elit ut Lorem eiusmod dolor et eiusmod.
+            Anim occaecat nulla in non consequat eiusmod velit incididunt. <br>
+    </div>
+
+    <br>
+
+    <div class="container-fluid" id="flavor">
+        <h3>Flavor Exploration</h3><br>
+        <br>
+        <div class="row">
+            <div class="col-3 offset-1">
+                <h5>Choose the preferred wine type: </h5>
+            </div>
+            <div class="col-2" align="center">
+                <img class="wine" id="White" src="img/White.png" width="50%">
+                <br>
+                <p>White Wine</p>
+            </div>
+            <div class="col-2" align="center">
+                <img class="wine" id="Red" src="img/Red.png" width="50%">
+                <br>
+                <p>Red Wine</p>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-3 offset-1" id="flavor_title"></div>
+        </div>
+        <br>
+        <div class="row" id="flavor_row1"></div>
+        <!--<br>-->
+        <!--<div class="row" id="flavor_row2"></div>-->
+        <!--</div>-->
+        <!--<br>-->
+        <!--<div class="row">-->
+            <!--<div class="col-8 offset-3">-->
+                <!--<img src="img/explain.png" width="100%">-->
+            <!--</div>-->
+        <!--</div>-->
+        <br>
+        <div class="row" align="center">
+            <div class="col-5 offset-1" id="definition"></div>
+            <div class="col-5">
+                <div id="flavor_viz"></div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="container-fluid" id="recommend">
+        <h3>Recommendation</h3>
+        <br>
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="card">
+                    <div class="card-body">
+                       <div class="row">
+                           <div class="col-6">
+                               <h4>Chardonnay</h4>
+                               <br>
+                               <table width="100%">
+                                   <tr>
+                                       <td>Boldness</td>
+                                       <td>
+                                           <img src="img/bold_white.png">
+                                           <img src="img/bold_white.png">
+                                           <img src="img/bold_white.png">
+                                           <img src="img/bold_white.png">
+                                           <img src="img/bold_white.png">
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Sweetness</td>
+                                       <td>
+                                           <img src="img/sweet.png">
+                                           <img src="img/sweet.png">
+                                           <img src="img/sweet_empty.png">
+                                           <img src="img/sweet_empty.png">
+                                           <img src="img/sweet_empty.png">
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Acidity</td>
+                                       <td>
+                                           <img src="img/lemon.png">
+                                           <img src="img/lemon.png">
+                                           <img src="img/lemon.png">
+                                           <img src="img/lemon_empty.png">
+                                           <img src="img/lemon_empty.png">
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Alcohol</td>
+                                       <td>13.5-15% ABV</td>
+                                   </tr>
+                               </table>
+                           </div>
+                           <div class="col-6" align="center">
+                               <img src="img/viz_placeholder.png" width="100%">
+                           </div>
+                       </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-12">
+                                <h5>The Top 5 You Could Try:</h5>
+                                <ol>
+                                    <li>Lava Cap 2015 Reserve Chardonnay (El Dorado)</li>
+                                    <li>...</li>
+                                    <li>...</li>
+                                    <li>...</li>
+                                    <li>...</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+<div class="container-fluid" id="footer">
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">INFO247 Final Project</a>
+    </nav>
+</div>
+<script>
+    const img_path = "http://localhost/Wine/img/";
+    const flavors = {
+      "White": ["Citrus Fruit","Floral","Herbal","Honey","Cream"],
+      "Red":["Red Fruit","Black Fruit","Floral","Earthy","Pepper"]
+    };
+    var wine = "";
+    var flavors_select = {first:"",second:""};
+    var flavor_count = 0;
+
+    $(".wine").click(function(e){
+        //clean
+        $("#definition").html("");
+        $("#flavor_viz").html("");
+
+        let curr = e.target;
+        if(wine !== "")
+            $("#"+wine).attr("src",img_path+wine+".png");
+        curr.src = img_path+curr.id+"_select.png";
+        wine = curr.id;
+        console.log(wine);
+
+        $("#flavor_title").html("<h5>Choose two favorite flavors: </h5>");
+        set_flavor_options(curr.id);
+    });
+
+    function set_flavor_options(type){
+        let options = flavors[type];
+        let htmlStr = "<div class='offset-1'></div>";
+
+        options.forEach(function(flavor){
+            let id = flavor;
+            let name = flavor;
+            if(flavor === "Floral"){
+                id += type;
+            }else if(flavor.includes("Fruit")){
+                let subs = flavor.split(" ");
+                id = subs[0]+subs[1];
+            }
+            htmlStr += "<div class='col-2' align='center'>" +
+                            "<img class='flavor' id='"+id +"' alt='"+name +"' src='"+img_path+id+".png"+"' width='50%'>" +
+                            "<br>" +
+                            "<p>"+name+"</p>" +
+                            "</div>";
+        });
+        $("#flavor_row1").html(htmlStr);
+        bindFlavorClickEvent();
+    }
+
+    function bindFlavorClickEvent(){
+        let definition = $("#definition");
+        let viz = $("#flavor_viz");
+        $(".flavor").click(function(e){
+            let curr = e.target;
+            if(curr.src === img_path+curr.id+".png"){
+                if(flavor_count < 2){
+                    flavor_count === 0? flavors_select.first = curr.id:flavors_select.second = curr.id;
+                }else{
+                    //clean before
+                    definition.html("");
+                    flavor_count = 0;
+                    let first = $("#"+flavors_select.first);
+                    let second = $("#"+flavors_select.second);
+                    first.attr('src',img_path+flavors_select.first+".png");
+                    second.attr('src',img_path+flavors_select.second+".png");
+                    flavors_select.first = curr.id;
+                }
+                curr.src = img_path+curr.id+"_select.png";
+                flavor_count++;
+                let strHtml = definition.html();
+                strHtml += "<img src='img/explain"+flavor_count+".png' width='75%' style='padding-top: 5em;'>";
+                definition.html(strHtml);
+            }else {
+                curr.src = img_path+curr.id+".png";
+                flavor_count--;
+                viz.html("");
+            }
+            console.log(flavors_select);
+            console.log(flavor_count);
+
+            //call to generate flavor viz
+            if(flavor_count === 2){
+                viz.html("");
+                getFlavorViz(wine,$("#"+flavors_select.first).attr("alt"),$("#"+flavors_select.second).attr("alt"));
+            }
+
+        });
+    }
+</script>
+<script src="wineViz.js"></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
