@@ -255,6 +255,11 @@
                 curr.src = img_path+curr.id+".png";
                 flavor_count--;
                 viz.html("");
+                if(flavor_count === 0){
+                    definition.html("");
+                }else {
+                    definition.html("<img src='img/explain1.png' width='75%' style='padding-top: 5em;'>");
+                }
             }
             console.log(flavors_select);
             console.log(flavor_count);
