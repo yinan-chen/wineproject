@@ -76,12 +76,12 @@
                 <h5>Choose the preferred wine type: </h5>
             </div>
             <div class="col-2" align="center">
-                <img class="wine" id="White" src="img/White.png" width="50%">
+                <img class="wine" id="White" src="img/wine/White.png">
                 <br>
                 <p>White Wine</p>
             </div>
             <div class="col-2" align="center">
-                <img class="wine" id="Red" src="img/Red.png" width="50%">
+                <img class="wine" id="Red" src="img/wine/Red.png">
                 <br>
                 <p>Red Wine</p>
             </div>
@@ -127,31 +127,31 @@
                                    <tr>
                                        <td>Boldness</td>
                                        <td>
-                                           <img src="img/bold_white.png">
-                                           <img src="img/bold_white.png">
-                                           <img src="img/bold_white.png">
-                                           <img src="img/bold_white.png">
-                                           <img src="img/bold_white.png">
+                                           <img src="img/recommendation/bold_white.png">
+                                           <img src="img/recommendation/bold_white.png">
+                                           <img src="img/recommendation/bold_white.png">
+                                           <img src="img/recommendation/bold_white.png">
+                                           <img src="img/recommendation/bold_white.png">
                                        </td>
                                    </tr>
                                    <tr>
                                        <td>Sweetness</td>
                                        <td>
-                                           <img src="img/sweet.png">
-                                           <img src="img/sweet.png">
-                                           <img src="img/sweet_empty.png">
-                                           <img src="img/sweet_empty.png">
-                                           <img src="img/sweet_empty.png">
+                                           <img src="img/recommendation/sweet.png">
+                                           <img src="img/recommendation/sweet.png">
+                                           <img src="img/recommendation/sweet_empty.png">
+                                           <img src="img/recommendation/sweet_empty.png">
+                                           <img src="img/recommendation/sweet_empty.png">
                                        </td>
                                    </tr>
                                    <tr>
                                        <td>Acidity</td>
                                        <td>
-                                           <img src="img/lemon.png">
-                                           <img src="img/lemon.png">
-                                           <img src="img/lemon.png">
-                                           <img src="img/lemon_empty.png">
-                                           <img src="img/lemon_empty.png">
+                                           <img src="img/recommendation/lemon.png">
+                                           <img src="img/recommendation/lemon.png">
+                                           <img src="img/recommendation/lemon.png">
+                                           <img src="img/recommendation/lemon_empty.png">
+                                           <img src="img/recommendation/lemon_empty.png">
                                        </td>
                                    </tr>
                                    <tr>
@@ -190,11 +190,11 @@
     </nav>
 </div>
 <script>
-    //const img_path = "http://localhost/Wine/img/";
+    //const img_path = "http://localhost/wineproject/img/";
     const img_path = "https://yinan-chen.github.io/wineproject/img/";
     const flavors = {
-      "White": ["Citrus Fruit","Floral","Herbal","Honey","Cream"],
-      "Red":["Red Fruit","Black Fruit","Floral","Earthy","Pepper"]
+      "White": ["Citrus Fruit","Stone Fruit","Tropical Fruit","Floral","Herbal"],
+      "Red":["Red Fruit","Black Fruit","Floral","Cooking Spice","Leather"]
     };
     var wine = "";
     var flavors_select = {first:"",second:""};
@@ -207,8 +207,8 @@
 
         let curr = e.target;
         if(wine !== "")
-            $("#"+wine).attr("src",img_path+wine+".png");
-        curr.src = img_path+curr.id+"_select.png";
+            $("#"+wine).attr("src",img_path+"wine/"+wine+".png");
+        curr.src = img_path+"wine/"+curr.id+"_select.png";
         wine = curr.id;
         console.log(wine);
 
@@ -225,12 +225,12 @@
             let name = flavor;
             if(flavor === "Floral"){
                 id += type;
-            }else if(flavor.includes("Fruit")){
+            }else if(flavor.includes("Fruit") || flavor.includes("Spice")){
                 let subs = flavor.split(" ");
                 id = subs[0]+subs[1];
             }
             htmlStr += "<div class='col-2' align='center'>" +
-                            "<img class='flavor' id='"+id +"' alt='"+name +"' src='"+img_path+id+".png"+"' width='50%'>" +
+                            "<img class='flavor' id='"+id +"' alt='"+name +"' src='"+img_path+"icon/"+id+".png"+"'>" +
                             "<br>" +
                             "<p>"+name+"</p>" +
                             "</div>";
@@ -244,7 +244,7 @@
         let viz = $("#flavor_viz");
         $(".flavor").click(function(e){
             let curr = e.target;
-            if(curr.src === img_path+curr.id+".png"){
+            if(curr.src === img_path+"icon/"+curr.id+".png"){
                 if(flavor_count < 2){
                     flavor_count === 0? flavors_select.first = curr.id:flavors_select.second = curr.id;
                 }else{
@@ -254,23 +254,23 @@
                     flavor_count = 0;
                     let first = $("#"+flavors_select.first);
                     let second = $("#"+flavors_select.second);
-                    first.attr('src',img_path+flavors_select.first+".png");
-                    second.attr('src',img_path+flavors_select.second+".png");
+                    first.attr('src',img_path+"icon/"+flavors_select.first+".png");
+                    second.attr('src',img_path+"icon/"+flavors_select.second+".png");
                     flavors_select.first = curr.id;
                 }
-                curr.src = img_path+curr.id+"_select.png";
+                curr.src = img_path+"icon/"+curr.id+"_select.png";
                 flavor_count++;
                 let strHtml = definition.html();
-                strHtml += "<img src='img/explain"+flavor_count+".png' width='75%' style='padding-top: 5em;'>";
+                strHtml += "<img src='img/scale/explain"+flavor_count+".png' width='75%' style='padding-top: 5em;'>";
                 definition.html(strHtml);
             }else {
-                curr.src = img_path+curr.id+".png";
+                curr.src = img_path+"icon/"+curr.id+".png";
                 flavor_count--;
                 viz.html("");
                 if(flavor_count === 0){
                     definition.html("");
                 }else {
-                    definition.html("<img src='img/explain1.png' width='75%' style='padding-top: 5em;'>");
+                    definition.html("<img src='img/scale/explain1.png' width='75%' style='padding-top: 5em;'>");
                 }
             }
             console.log(flavors_select);
