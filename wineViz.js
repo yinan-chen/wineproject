@@ -93,11 +93,36 @@ function getFlavorViz(wineType,y,x){
                     .duration(500)
                     .style("opacity", 0);
             })
-            .on("click",function(){
+            .on("click",function(d){
                 $("#recommend_title").html("<h3>Recoomendation</h3>");
-                $("#details").html("<img src='img/detail/placeholder.png' width='100%'>");
+                $("#details").html(getClickStr(scatterMap[[d[y],d[x]]]));
             });
     });
+}
+
+function getClickStr(map_list){
+    if(map_list.length === 1){
+        return "<img src='img/detail/placeholder1.png' width='80%'>"
+    }else{
+        return "<div id='multi' class='carousel slide' data-ride='carousel'>" +
+                    "<ul class='carousel-indicators'>" +
+                        "<li data-target='#multi' data-slide-to='0' class='active'></li>" +
+                        "<li data-target='#multi' data-slide-to='1'></li>" +
+                        "<li data-target='#multi' data-slide-to='2'></li>" +
+                    "</ul>" +
+                    "<div class='carousel-inner'>" +
+                        "<div class='carousel-item active'>" +
+                            "<img src='img/detail/placeholder1.png' width='80%'>" +
+                        "</div>" +
+                        "<div class='carousel-item'>" +
+                            "<img src='img/detail/placeholder2.png' width='80%'>" +
+                        "</div>" +
+                        "<div class='carousel-item'>" +
+                            "<img src='img/detail/placeholder3.png' width='80%'>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>"
+    }
 }
 
 

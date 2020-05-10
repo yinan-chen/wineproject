@@ -53,6 +53,10 @@ tr{
     height:50px;
 }
 
+.carousel-indicators{
+    bottom: -20px;
+}
+
 .carousel-indicators li{
     background-color: darkgray;
 }
