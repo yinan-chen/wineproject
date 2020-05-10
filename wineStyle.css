@@ -1,10 +1,13 @@
-div#header.container-fluid, div#footer.container-fluid{
+/*header,footer*/
+div#header.container-fluid{
     padding:0;
 }
 
 a{
     color:black;
 }
+
+/*splash*/
 
 div#splash{
     margin-top: 3em;
@@ -32,21 +35,43 @@ div#splash.card{
     font-style: italic;
 }
 
+/*background*/
+
 p#user_content{
     margin-top: 16%;
 }
 
-/*#main{*/
-    /*margin-top:24px;*/
-/*}*/
+/*flavor*/
 
 #main div.container-fluid{
     margin-top: 48px;
 }
 
+/*recommend*/
+
 tr{
     height:50px;
 }
+
+.carousel-indicators li{
+    background-color: darkgray;
+}
+
+.carousel-indicators .active{
+    background-color: black;
+}
+
+/*footer*/
+/*footer{*/
+    /*background-color:#f8f9fa;*/
+    /*left:0;*/
+    /*bottom:0!important;*/
+    /*width:100%;*/
+    /*height:64px;*/
+    /*overflow:hidden;*/
+/*}*/
+
+/*Viz*/
 
 .grid path {
     stroke-width: 0;

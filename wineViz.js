@@ -92,6 +92,10 @@ function getFlavorViz(wineType,y,x){
                 div.transition()
                     .duration(500)
                     .style("opacity", 0);
+            })
+            .on("click",function(){
+                $("#recommend_title").html("<h3>Recoomendation</h3>");
+                $("#details").html("<img src='img/detail/placeholder.png' width='100%'>");
             });
     });
 }
