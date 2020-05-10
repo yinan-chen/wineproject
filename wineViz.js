@@ -94,7 +94,7 @@ function getFlavorViz(wineType,y,x){
                     .style("opacity", 0);
             })
             .on("click",function(d){
-                $("#recommend_title").html("<h3>Recoomendation</h3>");
+                $("#recommend_title").html("<h3>Recommendation</h3>");
                 $("#details").html(getClickStr(scatterMap[[d[y],d[x]]]));
             });
     });
