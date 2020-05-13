@@ -8,67 +8,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--Animate.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Halant:wght@400;500;600;700&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!--main style file-->
     <link rel="stylesheet" href="wineStyle.css">
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
 <body>
-<div class="container-fluid" id="header">
-    <nav id="navScrollControl" class="navbar fixed-top navbar-light bg-light">
-        <a class="navbar-brand" href="#">Wine Project</a>
-        <ul class="nav nav-pills">
+<!--header-->
+<nav id="header" class="navbar fixed-top navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="#"><img src="img/logo.png" width="80%"></a>
+        <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="#bg">Background</a>
+                <a class="nav-link" href="#">Our Research</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#flavor">Flavor Exploration</a>
+                <a class="nav-link" href="#">Taste Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#recommend">Recommendation</a>
+                <a class="nav-link" href="#">Details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Tips</a>
             </li>
         </ul>
-    </nav>
-    <div class="card bg-dark text-white" id="splash">
-        <img class="card-img" src="./img/splash.jpg">
-        <div class="card-img-overlay">
-            <div class="card-text">
-                <p>We all have this moment. <br><br>
-                    Imagine - when you stand in front of the wine aisle of a store, you feel literally overwhelmed.<br>
-                    The label on the bottle is very informative, and often too informative to wine novice - cuz nothing really makes sense!</p>
-                <p id="key">
-                    Should I pick a wine based on its price, brand, variety, rating, region, year, or even more confusingly complex attributes,
-                    like acidity, sweetness, bodiness, aromas and colors?
-                </p>
-                <p>Although a bunch of wine selection guidance is out there, wine preference is so subjective.<br><br>
-                    The best way to know whether you like the wine or not is to taste it yourself.
-                </p>
-            </div>
-        </div>
     </div>
-</div>
-<div data-spy="scroll" data-target="#" data-offset="0" id="main">
-    <div class="container-fluid" id="bg">
-        <h3>Background</h3>
+</nav>
+
+<!--Intro Page-->
+<section class="section"  id="intro">
+    <div class="container">
+        <h1 class="primary-title">A Guide to Wine Purchase</h1>
         <br>
         <div class="row">
-            <div class="col-5 offset-1">
-                <img src="img/user_viz.png" width="80%">
+            <div class="col-8">
+                <p>
+                    We all have this moment...<br><br>
+
+                    Imagine yourself standing in front of the wine aisle of a store, wondering where to start.
+                    The labels on the wine bottles are very informative, but often too informative to wine novice - cuz nothing really makes sense!<br><br>
+
+                    <b>
+                        Should I pick a wine based on its price, brand, variety, rating, region, year, or even more confusingly complex attributes,
+                        like acidity, sweetness, body, aromas and colors?<br><br>
+                    </b>
+
+                    Conventional apps often start from recommending a list of wines from an expert perspective. We believe wine preference is subjective.
+                    The best way to know whether you like the wine or not is to taste it yourself.
+                    Yet what if you can’t taste wines when you have to purchase one at a grocery store?
+                    Our project is uniquely positioned to recommend young people in their 20s affordable wines based on flavors.
+                    Hope you can become a more confident wine buyer with the help of our project!
+                </p>
             </div>
-            <div class="col-5">
-                <p id="user_content">
-                    For people in their 20s, they face a steep learning curve of wines, but they are also most curious to explore and learn.
-                    We want to help them navigate the world of wines more easily, based on their preference of flavors to instantly associate.
-                    In this process, the 20s can pick a few varieties of wines that are both affordable and high-rated, and when tasting by themselves,
-                    they can know about the wines and feel what truly appeals to them.
-                    <br>
+            <div class="col-4">
+                <img src="img/intro.png" width="110%">
+            </div>
+        </div>
+        <img id="btnToIntro" src="img/down.png" onclick="showIntro()">
+    </div>
+</section>
+
+<!--Research-->
+<section class="section" id="research">
+    <div class="container">
+        <h1 class="primary-title-colored">Our Research</h1>
+        <br>
+        <h4 class="secondary-title-colored">Drinking frequency among different age groups</h4>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <img src="img/research_viz1.png" width="90%">
+            </div>
+            <div class="col-6">
+                <p>
+                    Analyze of the change in drinking frequency across age showed that <b>the 21-29 group is the only significantly growing market segment</b>.
+                    Specifically, 47% of the 20s express drinking more wine than a couple years ago.<br><br>
+
+                    Since 21 is the legal drinking age in the U.S., it makes sense that 21-29 years old are new to the wine world,
+                    learning and exploring. In contrast, other age groups drinking frequencies are relatively stable.
+                    Thus we decided to target people in their 20s believing that <b>they have the strongest need to explore wines but with limited wine knowledge</b>.
                 </p>
             </div>
         </div>
+        <h4 class="secondary-title-colored" style="margin-top: 56px;">Understand affordable price & wine rating</h4>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <p>
+                    Q: What does affordability mean for wine purchasers? <br><br>
+
+                    We found that wine cheaper than 20 dollars are the most popular among wine drinkers.
+                    <b>In fact, most people never buy wines over 20 dollars.</b>
+                    Thus, we filtered our wine dataset under 20 dollars, believing it is a standard for affordability in this project.
+                </p>
+            </div>
+            <div class="col-6">
+                <p>
+                    Q: What does affordability mean for wine purchasers? <br><br>
+
+                    Not necessarily. The data showed that the most expensive wine is not rated very high,
+                    while higher price does not necessarily guarantee better wines. In other words, <b>affordable wines can also be good wines</b>.
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <img src="img/research_viz2.png" width="90%" align="center">
+            </div>
+            <div class="col-6">
+                <img src="img/research_viz3.png" width="90%" align="center">
+            </div>
+        </div>
+        <div align="center">
+            <p style="margin-top: 56px;"><b>👇 Ready to explore wines based on your flavor ? 👇</b></p>
+            <button id="toTasteBtn" onclick="showTasteProfile()"><b>START</b></button>
+        </div>
     </div>
+</section>
 
-    <br>
+<!--Taste Profile-->
+<!--<section class="section" id="taste">-->
+   <!--<div class="container">-->
+       <!--<h1 class="primary-title">Taste Profile</h1>-->
+   <!--</div>-->
+<!--</section>-->
 
-    <div class="container-fluid" id="flavor">
+<section class="section" id="taste">
+    <div class="container-fluid">
         <h3>Flavor Exploration</h3><br>
         <br>
         <div class="row">
@@ -100,21 +171,42 @@
             </div>
         </div>
     </div>
+</section>
 
-    <br>
-
-    <div class="container-fluid" id="recommend">
+<!--Recommendation-->
+<section class="section" id="recommendation">
+    <div class="container-fluid">
         <div id="recommend_title"></div>
         <div class="row">
             <div class="col-8 offset-2" id="details" align="center"></div>
         </div>
     </div>
-</div>
-<br><br>
-<!--<footer >-->
-    <!--<h5 style="margin:20px;">INFO247 Final Project</h5>-->
-<!--</footer>-->
+</section>
+
+<!--Wine Label-->
+<section class="section" id="label">
+
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <h6 style="padding-top:15px;">UC Berkeley INFO247 Information Visualization and Presentation - Final Project</h6>
+        <h6>Present to you by Yinan Chen, Yin Qiu, Xinran (Tracy) Wei</h6>
+        <h6 id="end"><a href="#"><u>References</u></a><span style="right:10%;position: absolute;">All Rights Reserved © 2020 </span></h6>
+    </div>
+</footer>
+
 <script>
+
+    function showIntro(){
+        $("#research").show();
+    }
+
+    function showTasteProfile(){
+        $("#taste").show();
+        $(".footer").show();
+    }
+
     //const img_path = "http://localhost/wineproject/img/";
     const img_path = "https://yinan-chen.github.io/wineproject/img/";
     const flavors = {
