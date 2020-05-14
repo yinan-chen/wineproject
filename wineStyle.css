@@ -193,5 +193,25 @@ div.tooltip {
     pointer-events: none;
 }
 
+/*tooltip*/
+.tippy-box[data-theme~='wine'] {
+  background-color: #F7F3EB;
+  color: black;
+  font-size: 16px;
+}
+
+.tippy-box[data-theme~='wine'][data-placement^='top'] > .tippy-arrow::before {
+  border-top-color: #F7F3EB;
+}
+.tippy-box[data-theme~='wine'][data-placement^='bottom'] > .tippy-arrow::before {
+  border-bottom-color: #F7F3EB;
+}
+.tippy-box[data-theme~='wine'][data-placement^='left'] > .tippy-arrow::before {
+  border-left-color: #F7F3EB;
+}
+.tippy-box[data-theme~='wine'][data-placement^='right'] > .tippy-arrow::before {
+  border-right-color: #F7F3EB;
+}
+
 
 

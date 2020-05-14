@@ -8,12 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!--Animate.css-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <!--google fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Halant:wght@400;500;600;700&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!--plugins-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css"/>
     <!--main style file-->
     <link rel="stylesheet" href="wineStyle.css">
+    <!--js-->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
@@ -199,7 +203,7 @@
         </h6>
     </div>
 </footer>
-
+<script src="constants.js"></script>
 <script>
     // control section display
     function showIntro(){
@@ -218,15 +222,6 @@
         $(".footer").show();
     }
 
-    //control Taste Profile User Interactions
-    // const data_path = "data/";
-    // const img_path = "http://localhost/wineproject/img/";
-    const data_path = "https://yinan-chen.github.io/wineproject/data/";
-    const img_path = "https://yinan-chen.github.io/wineproject/img/";
-    const flavors = {
-      "White": ["Citrus Fruit","Stone Fruit","Tropical Fruit","Floral","Herbal","Creaminess"],
-      "Red":["Red Fruit","Black Fruit","Floral","Herbal","Cooking Spice","Leather"]
-    };
     var wine = "";
     var flavor_select = ["",""];
     var flavor_count = 0;
@@ -284,7 +279,23 @@
                             "</div>";
         });
         $("#flavor_choices").html(htmlStr);
+        bindFlavorHoverEvent(type);
         bindFlavorClickEvent(data);
+    }
+
+    function bindFlavorHoverEvent(type){
+        let dict = details[type];
+        let flavors = Object.keys(dict);
+
+        flavors.forEach(flavor => {
+            let id = "#"+flavor;
+            tippy(id, {
+                content: dict[flavor],
+                allowHTML: true,
+                theme: 'wine',
+                placement: 'top-start',
+            });
+        });
     }
 
     function bindFlavorClickEvent(data){
