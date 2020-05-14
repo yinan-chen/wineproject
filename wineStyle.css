@@ -29,8 +29,11 @@ body{
     color: #841935;
 }
 
+.label{
+    font-size:16px;
+}
+
 section{
-    margin-top: 40px;
     padding:40px 0;
 }
 
@@ -58,7 +61,7 @@ a{
 
 /*Intro Page*/
 section#intro{
-    margin-top: 100px;
+    margin-top: 112px;
 }
 section#intro p span{
     font-weight: bolder;
@@ -94,8 +97,33 @@ button#toTasteBtn{
     /*display: none;*/
 }
 
+#helper{
+    display: none;
+    height:360px;
+}
+
+.step-icon-align{
+    padding-top: 2px;
+}
+
+img#flavor_step2, img#flavor_step3{
+    display: none;
+}
+
+img#flavor_step3, div#flavor_label_step3 p{
+    padding-top: 3rem;
+}
+
+button#varietyBtn{
+    border:1px solid rgb(0,0,0);
+}
+
+
 
 /*Recommendation*/
+#recommendation{
+    display: none;
+}
 
 tr{
     height:50px;
@@ -113,7 +141,10 @@ tr{
     background-color: black;
 }
 
-/*Wine Label*/
+/*tips*/
+#tips{
+    display: none;
+}
 
 /*Footer*/
 .footer {

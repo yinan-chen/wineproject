@@ -68,7 +68,7 @@
                 <img src="img/intro.png" width="110%">
             </div>
         </div>
-        <a href="#research"><img class="content-margin" id="btnToIntro" src="img/down.png" onclick="showIntro()"></a>
+        <a href="#research"><img class="content-margin" id="btnToIntro" src="img/icon/down.png" onclick="showIntro()"></a>
     </div>
 </section>
 
@@ -94,7 +94,7 @@
                 </p>
             </div>
         </div>
-        <h4 class="secondary-title-colored" style="margin-top: 56px;">Understand affordable price & wine rating</h4>
+        <h4 class="secondary-title-colored content-margin">Understand affordable price & wine rating</h4>
         <br>
         <div class="row">
             <div class="col-6">
@@ -132,45 +132,45 @@
 </section>
 
 <!--Taste Profile-->
-<section class="section" id="flavor">
+<section class="section" id="taste">
    <div class="container">
        <h1 class="primary-title">Taste Profile</h1>
+       <br>
+       <!--wine type selection-->
+       <div class="row">
+           <img src="img/icon/flavor_step1.png" height="100%" style="padding-left: 1.2rem;">
+           <div class="col-4">
+               <p class="step-icon-align">Select your preferred wine type</p>
+           </div>
+           <div class="col-2" align="center">
+               <img class="wine" id="White" src="img/wine/White.png" width="50%">
+               <br>
+               <p class="label">White Wine</p>
+           </div>
+           <div class="col-2" align="center">
+               <img class="wine" id="Red" src="img/wine/Red.png" width="50%">
+               <br>
+               <p class="label">Red Wine</p>
+           </div>
+       </div>
+       <br>
+       <!--flavors selection-->
+       <div class="row">
+           <img id="flavor_step2" src="img/icon/flavor_step2.png" height="100%" style="padding-left: 1.2rem;">
+           <div class="col-4" id="flavor_label_step2"></div>
+       </div>
+       <div class="row" id="flavor_choices"></div>
+       <br>
+       <!--error alert-->
+       <div id="errorAlert"></div>
+       <!--flavor viz-->
+       <div class="row">
+           <img id="flavor_step3" src="img/icon/flavor_step3.png" height="100%" style="padding-left: 1.2rem;">
+           <div class="col-6" id="flavor_label_step3"></div>
+           <div class="col-5" id="flavor_viz"></div>
+       </div>
+       <div id="helper"></div>
    </div>
-</section>
-
-<section id="taste">
-    <div class="container-fluid">
-        <h3>Flavor Exploration</h3><br>
-        <br>
-        <div class="row">
-            <div class="col-3 offset-1">
-                <h5>Choose the preferred wine type: </h5>
-            </div>
-            <div class="col-2" align="center">
-                <img class="wine" id="White" src="img/wine/White.png">
-                <br>
-                <p>White Wine</p>
-            </div>
-            <div class="col-2" align="center">
-                <img class="wine" id="Red" src="img/wine/Red.png">
-                <br>
-                <p>Red Wine</p>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-3 offset-1" id="flavor_title"></div>
-        </div>
-        <br>
-        <div class="row" id="flavor_row1"></div>
-        <br>
-        <div class="row" align="center">
-            <div class="col-5 offset-1" id="definition"></div>
-            <div class="col-5">
-                <div id="flavor_viz"></div>
-            </div>
-        </div>
-    </div>
 </section>
 
 <!--Recommendation-->
@@ -192,50 +192,81 @@
     <div class="container">
         <h6 style="padding-top:15px;">UC Berkeley INFO247 Information Visualization and Presentation - Final Project</h6>
         <h6>Present to you by Yinan Chen, Yin Qiu, Xinran (Tracy) Wei</h6>
-        <h6 id="end"><a href="#"><u>References</u></a><span style="right:10%;position: absolute;">All Rights Reserved © 2020 </span></h6>
+        <h6 id="end">
+            <a href="#"><u>Final Report</u></a>
+            <a href="#" style="margin-left:2rem;"><u>References</u></a>
+            <span style="right:10%;position: absolute;">All Rights Reserved © 2020 </span>
+        </h6>
     </div>
 </footer>
 
 <script>
-
+    // control section display
     function showIntro(){
         $("#research").show();
     }
 
     function showTasteProfile(){
         $("#taste").show();
+        $("#helper").show();
         // $(".footer").show();
     }
 
-    //const img_path = "http://localhost/wineproject/img/";
-    const img_path = "https://yinan-chen.github.io/wineproject/img/";
+    function showRestSections(){
+        $("#recommendation").show();
+        $("#tips").show();
+        $(".footer").show();
+    }
+
+    //control Taste Profile User Interactions
+    const data_path = "data/";
+    const img_path = "http://localhost/wineproject/img/";
+    //const data_path = "https://yinan-chen.github.io/wineproject/data/";
+    //const img_path = "https://yinan-chen.github.io/wineproject/img/";
     const flavors = {
-      "White": ["Citrus Fruit","Stone Fruit","Tropical Fruit","Floral","Herbal"],
-      "Red":["Red Fruit","Black Fruit","Floral","Cooking Spice","Leather"]
+      "White": ["Citrus Fruit","Stone Fruit","Tropical Fruit","Floral","Herbal","Creaminess"],
+      "Red":["Red Fruit","Black Fruit","Floral","Herbal","Cooking Spice","Leather"]
     };
     var wine = "";
-    var flavors_select = {first:"",second:""};
+    var flavor_select = ["",""];
     var flavor_count = 0;
+    var flavor_reference_id = "";
 
     $(".wine").click(function(e){
-        //clean
-        $("#definition").html("");
-        $("#flavor_viz").html("");
-
         let curr = e.target;
-        if(wine !== "")
-            $("#"+wine).attr("src",img_path+"wine/"+wine+".png");
-        curr.src = img_path+"wine/"+curr.id+"_select.png";
-        wine = curr.id;
-        console.log(wine);
 
-        $("#flavor_title").html("<h5>Choose two favorite flavors: </h5>");
-        set_flavor_options(curr.id);
+        if(wine !== curr.id){
+            //deselect selected one
+            if(wine !== ""){
+                $("#"+wine).attr("src",getWineImgPath(wine,false));
+
+                //reset settings
+                flavor_select = [","];
+                flavor_count = 0;
+                flavor_reference_id = "";
+                cleanFlavorViz();
+            }
+            //update with selected wine type
+            wine = curr.id;
+            curr.src = getWineImgPath(wine,true);
+
+            console.log(wine);
+
+            //read data
+            d3.csv(data_path+wine+".csv").then(function(data){
+                console.log(wine+" dataset loaded successfully!");
+                console.log(data[0]);
+                //display flavor options based on selected wine type
+                $("#flavor_step2").show();
+                $("#flavor_label_step2").html("<p class='step-icon-align'>Choose you <b>TWO</b> favorite flavors: </p>");
+                set_flavor_options(curr.id,data);
+            });
+        }
     });
 
-    function set_flavor_options(type){
+    function set_flavor_options(type,data){
         let options = flavors[type];
-        let htmlStr = "<div class='offset-1'></div>";
+        let htmlStr = "";
 
         options.forEach(function(flavor){
             let id = flavor;
@@ -247,59 +278,148 @@
                 id = subs[0]+subs[1];
             }
             htmlStr += "<div class='col-2' align='center'>" +
-                            "<img class='flavor' id='"+id +"' alt='"+name +"' src='"+img_path+"icon/"+id+".png"+"'>" +
+                            "<img class='flavor' id='"+id +"' alt='"+name +"' src='"+img_path+"flavor/"+id+".png"+"' width='50%'>" +
                             "<br>" +
-                            "<p>"+name+"</p>" +
+                            "<p class='label'>"+name+"</p>" +
                             "</div>";
         });
-        $("#flavor_row1").html(htmlStr);
-        bindFlavorClickEvent();
+        $("#flavor_choices").html(htmlStr);
+        bindFlavorClickEvent(data);
     }
 
-    function bindFlavorClickEvent(){
-        let definition = $("#definition");
-        let viz = $("#flavor_viz");
+    function bindFlavorClickEvent(data){
         $(".flavor").click(function(e){
             let curr = e.target;
-            if(curr.src === img_path+"icon/"+curr.id+".png"){
-                if(flavor_count < 2){
-                    flavor_count === 0? flavors_select.first = curr.id:flavors_select.second = curr.id;
-                }else{
-                    //clean before
-                    definition.html("");
-                    viz.html("");
-                    flavor_count = 0;
-                    let first = $("#"+flavors_select.first);
-                    let second = $("#"+flavors_select.second);
-                    first.attr('src',img_path+"icon/"+flavors_select.first+".png");
-                    second.attr('src',img_path+"icon/"+flavors_select.second+".png");
-                    flavors_select.first = curr.id;
-                }
-                curr.src = img_path+"icon/"+curr.id+"_select.png";
-                flavor_count++;
-                let strHtml = definition.html();
-                strHtml += "<img src='img/scale/explain"+flavor_count+".png' width='75%' style='padding-top: 5em;'>";
-                definition.html(strHtml);
-            }else {
-                curr.src = img_path+"icon/"+curr.id+".png";
-                flavor_count--;
-                viz.html("");
-                if(flavor_count === 0){
-                    definition.html("");
-                }else {
-                    definition.html("<img src='img/scale/explain1.png' width='75%' style='padding-top: 5em;'>");
-                }
-            }
-            console.log(flavors_select);
-            console.log(flavor_count);
+            let error =  $("#errorAlert");
 
-            //call to generate flavor viz
-            if(flavor_count === 2){
-                viz.html("");
-                getFlavorViz(wine,$("#"+flavors_select.first).attr("alt"),$("#"+flavors_select.second).attr("alt"));
+            if(curr.src === getFlavorImgPath(curr.id,false)){
+                if(flavor_count < 2){
+                    flavor_count === 0? flavor_select[0] = curr.id:flavor_select[1] = curr.id;
+                    curr.src = getFlavorImgPath(curr.id,true);
+                    flavor_count++;
+                }else{
+                    //choose more than two flavors => error handle
+                    error.html(getErrorAlertHtmlStr());
+                }
+            }else {
+                //clean
+                error.html("");
+                cleanFlavorViz();
+                //show helper
+                $("#helper").show();
+                //deselect the selected one
+                curr.src = getFlavorImgPath(curr.id,false);
+                if(flavor_select[0] === curr.id)
+                    flavor_select[0] = flavor_select[1];
+                flavor_select[1] = "";
+                flavor_count--;
+            }
+
+            console.log(flavor_select);
+
+            //call to generate step3 part
+            if(flavor_count === 2 &&  error.html() === ""){
+                cleanFlavorViz();
+                //display step3 label
+                $("#flavor_step3").show();
+                //set variety dropdown
+                $("#flavor_label_step3").html(getFlavorStep3HtmlStr(data.map(d => d.Name)));
+                bindDropdownClickEvent();
+                //viz: use alphabetical order to set y/x with flavor names
+                let flavors = [$("#"+flavor_select[0]).attr("alt"),$("#"+flavor_select[1]).attr("alt")];
+                flavors.sort();
+                getFlavorViz(data,flavors[0],flavors[1]);
+                $("#helper").hide();
             }
 
         });
+    }
+
+    function bindDropdownClickEvent(){
+        $(".dropdown-item").click(function(){
+            let variety = $(this).text();
+            $("#varietyBtn").text(variety+" ");
+            console.log(variety);
+
+            //update scatter image
+            if(flavor_reference_id !== ""){
+                let pre = $("#"+flavor_reference_id);
+                pre.attr("href","img/icon/grape.png");
+                pre.attr("opacity","0.6");
+            }
+            let variety_id = getVarietyId(variety);
+            let reference = $("#"+variety_id);
+            reference.attr("href","img/icon/grape_reference.png");
+            reference.attr("opacity","2.0");
+            flavor_reference_id = variety_id;
+
+        });
+    }
+
+    function getWineImgPath(name,selected){
+        if(selected)
+            return img_path+"wine/"+name+"_select.png";
+        else
+            return img_path+"wine/"+name+".png";
+    }
+
+    function getFlavorImgPath(name,selected){
+        if(selected)
+            return img_path+"flavor/"+name+"_select.png";
+        else
+            return img_path+"flavor/"+name+".png";
+    }
+
+    function getErrorAlertHtmlStr(){
+        return "<div class='alert alert-danger alert-dismissible fade show' role='alert'>" +
+                    "You could only select <strong>TWO</strong> flavors! Please deselect unwanted ones first." +
+                    "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>" +
+                        "<span aria-hidden='true'>&times;</span>" +
+                    "</button>" +
+                "</div>"
+    }
+
+    function getFlavorStep3HtmlStr(varieties){
+        //label
+        htmlStr = "<p class='step-icon-align'><b>Hover & Click</b> on the flavor combination <img src='img/icon/grape.png'> " +
+            "that you like to explore the associated wine varieties recommendations</p>";
+        //dropdown title
+        htmlStr += "<p>(Optional) Set your familiar wine variety as the reference <img src='img/icon/grape_reference.png'> to better understand the scale:</p>";
+        //dropdown
+        htmlStr += getVarietyDropDownHtmlStr(varieties);
+        return htmlStr;
+    }
+
+    function getVarietyDropDownHtmlStr(varieties){
+        htmlStr = "<div class='dropdown'>" +
+                    "<button class='btn dropdown-toggle' type='button' id='varietyBtn' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>" +
+                        "Choose one familiar wine variety " +
+                    "</button>" +
+                  "<div class='dropdown-menu' aria-labelledby='varietyBtn'>";
+
+        varieties.forEach(variety => {
+           htmlStr += "<button class='dropdown-item' type='button'>"+ variety +"</button>"
+        });
+
+        return htmlStr += "</div></div>";
+    }
+
+    function cleanFlavorViz(){
+        $("#flavor_step3").hide();
+        $("#flavor_label_step3").html("");
+        $("#flavor_viz").html("");
+    }
+
+    function getVarietyId(name){
+        if(name.includes(" ")){
+            let parts = name.split(" ");
+            if(parts[0] === "Nero"){
+                return parts[0];
+            }
+            return parts[0]+parts[1]
+        }else{
+            return name;
+        }
     }
 </script>
 <script src="wineViz.js"></script>
