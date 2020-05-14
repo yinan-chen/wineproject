@@ -110,7 +110,7 @@ section#intro img#btnToIntro{
 
 /*Research*/
 #research{
-    /*display: none;*/
+    display: none;
 }
 
 section#research{
@@ -129,24 +129,28 @@ button#toTasteBtn{
 
 /*Flavor Profile*/
 #taste{
-    /*display: none;*/
+    display: none;
 }
 
 #helper{
     display: none;
-    height:360px;
+    height:400px;
 }
 
 .step-icon-align{
-    padding-top: 2px;
+    padding-top: 4px;
 }
 
 img#flavor_step2, img#flavor_step3{
     display: none;
 }
 
-img#flavor_step3, div#flavor_label_step3 p{
-    padding-top: 3rem;
+img#flavor_step3{
+    padding-top: 48px;
+}
+
+div#flavor_label_step3 p{
+    padding-top: 46px;
 }
 
 button#varietyBtn{
@@ -157,7 +161,7 @@ button#varietyBtn{
 
 /*Recommendation*/
 #recommendation{
-    /*display: none;*/
+    display: none;
 }
 
 section#recommendation{
@@ -182,7 +186,7 @@ tr{
 
 /*tips*/
 #tips{
-    /*display: none;*/
+    display: none;
 }
 #tips{
     margin-bottom: 40px;
@@ -190,9 +194,10 @@ tr{
 
 /*Footer*/
 .footer {
-    /*display: none;*/
+    display: none;
     /*position: absolute;*/
-    bottom: 0;
+  /*  bottom: 0;
+    left:0;*/
     width: 100%;
     height: 100px;
     line-height: 100px;

@@ -1,7 +1,7 @@
 //flavor viz - d3 scatterplot
 
 var margin = {top:50,bottom:50,left:50,right:50};
-var size = 320;
+var size = 350;
 var imageSize = 40;
 
 var flavor_x = d3.scaleLinear()
@@ -93,6 +93,7 @@ function getFlavorViz(data,y,x){
                 .style("opacity", 0);
         })
         .on("click",function(d){
+            showRestSections();
             $("#recommend_title").html("<h1 class='primary-title-colored' >The variety you selected</h1>");
             $("#details").html(getClickStr(scatterMap[[d[y],d[x]]]));
         });

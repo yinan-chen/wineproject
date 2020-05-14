@@ -21,7 +21,7 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
-<body data-spy="scroll" data-target="#header" data-offset="64">
+<body data-spy="scroll" data-target="#header" data-offset="66">
 <!--header-->
 <nav id="header" class="navbar fixed-top navbar-light">
     <div class="container">
@@ -170,8 +170,8 @@
        <!--flavor viz-->
        <div class="row">
            <img id="flavor_step3" src="img/icon/flavor_step3.png" height="100%" style="padding-left: 1.2rem;">
-           <div class="col-6" id="flavor_label_step3"></div>
-           <div class="col-5" id="flavor_viz"></div>
+           <div class="col-5" id="flavor_label_step3"></div>
+           <div class="col-5 offset-1" id="flavor_viz"></div>
        </div>
        <div id="helper"></div>
    </div>
@@ -256,7 +256,7 @@
     var wine = "";
     var flavor_select = ["",""];
     var flavor_count = 0;
-    var flavor_reference_id = "";
+    var flavor_reference = "";
 
     $(".wine").click(function(e){
         let curr = e.target;
@@ -269,7 +269,7 @@
                 //reset settings
                 flavor_select = [","];
                 flavor_count = 0;
-                flavor_reference_id = "";
+                flavor_reference = "";
                 cleanFlavorViz();
             }
             //update with selected wine type
@@ -384,8 +384,8 @@
             console.log(variety);
 
             //update scatter image
-            if(flavor_reference_id !== ""){
-                let pre = $("#"+flavor_reference_id);
+            if(flavor_reference !== ""){
+                let pre = $("#"+getVarietyId(flavor_reference));
                 pre.attr("href","img/icon/grape.png");
                 pre.attr("opacity","0.6");
             }
@@ -393,7 +393,7 @@
             let reference = $("#"+variety_id);
             reference.attr("href","img/icon/grape_reference.png");
             reference.attr("opacity","2.0");
-            flavor_reference_id = variety_id;
+            flavor_reference = variety;
 
         });
     }
@@ -424,7 +424,7 @@
     function getFlavorStep3HtmlStr(varieties){
         //label
         htmlStr = "<p class='step-icon-align'><b>Hover & Click</b> on the flavor combination <img src='img/icon/grape.png'> " +
-            "that you like to explore the associated wine varieties recommendations</p>";
+            "that you like to explore the associated wine varieties</p>";
         //dropdown title
         htmlStr += "<p>(Optional) Set your familiar wine variety as the reference <img src='img/icon/grape_reference.png'> to better understand the scale:</p>";
         //dropdown
