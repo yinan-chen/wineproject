@@ -1,8 +1,8 @@
 //control Taste Profile User Interactions
-// const data_path = "data/";
-// const img_path = "http://localhost/wineproject/img/";
-const data_path = "https://yinan-chen.github.io/wineproject/data/";
-const img_path = "https://yinan-chen.github.io/wineproject/img/";
+const data_path = "data/";
+const img_path = "http://localhost/wineproject/img/";
+// const data_path = "https://yinan-chen.github.io/wineproject/data/";
+// const img_path = "https://yinan-chen.github.io/wineproject/img/";
 const flavors = {
     "White": ["Citrus Fruit","Stone Fruit","Tropical Fruit","Floral","Herbal","Creaminess"],
     "Red":["Red Fruit","Black Fruit","Floral","Herbal","Cooking Spice","Leather"]

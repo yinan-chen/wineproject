@@ -122,7 +122,11 @@ button#varietyBtn{
 
 /*Recommendation*/
 #recommendation{
-    display: none;
+    /*display: none;*/
+}
+
+section#recommendation{
+    background-color: #F7F3EB;
 }
 
 tr{
@@ -143,12 +147,15 @@ tr{
 
 /*tips*/
 #tips{
-    display: none;
+    /*display: none;*/
+}
+#tips{
+    margin-bottom: 40px;
 }
 
 /*Footer*/
 .footer {
-    display: none;
+    /*display: none;*/
     /*position: absolute;*/
     bottom: 0;
     width: 100%;
@@ -180,6 +187,7 @@ tr{
     shape-rendering: crispEdges;
 }
 
+/*tooltip*/
 div.tooltip {
     position: absolute;
     max-width: 200px;
@@ -192,7 +200,6 @@ div.tooltip {
     pointer-events: none;
 }
 
-/*tooltip*/
 .tippy-box[data-theme~='wine'] {
   background-color: #F7F3EB;
   color: black;
