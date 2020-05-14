@@ -1,6 +1,6 @@
 /*body*/
 html {
-  scroll-padding-top: 75px;
+  scroll-padding-top: 64px;
 }
 
 body{
@@ -44,19 +44,54 @@ section{
 /*header*/
 nav#header{
     /*padding:1rem;*/
-    /*background-color: #841935 !important;*/
-    background-color: #FFFFFF !important;
+    background-color: #FFFFFF;
+    /*Animation*/
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
 }
 
 .nav-link{
     font-family: 'Halant', serif;
     font-weight: 600;
     letter-spacing: 1px;
-    /*color: #F9F1E4 !important; */
+    color: black;
 }
 
-a{
-    color:black;
+.nav-link:hover{
+    color: #841935;
+}
+
+nav#header.shrink{
+    /*background-color: #841935;*/
+    height:64px;
+    padding: 0;
+    /*Animation*/
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+nav#header.shrink img{
+    width:60%;
+    /*Animation*/
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+nav#header.shrink .nav-link{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+nav#header.shrink .nav-item:hover, nav#header.shrink .nav-link.active{
+    /*background-color: #F9F1E4;*/
+}    
+
+nav#header.shrink .nav-link{
+    /*color: #F9F1E4;*/
+}
+
+nav#header.shrink .nav-link:hover, nav#header.shrink .nav-link.active{
+    color: #841935;
 }
 
 /*Intro Page*/
