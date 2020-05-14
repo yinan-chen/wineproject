@@ -82,7 +82,7 @@ function getFlavorViz(data,y,x){
         .on("mouseover", function(d) {
             div.transition()
                 .duration(200)
-                .style("opacity", .9);
+                .style("opacity", 1.0);
             div.html(getTooltipStr(scatterMap[[d[y],d[x]]]))
                 .style("left", (d3.event.pageX + 8) + "px")
                 .style("top", (d3.event.pageY - 32) + "px");
@@ -121,7 +121,7 @@ function getFlavorScatterMap(data,y,x){
 
 function getTooltipStr(map_list){
     let str = "";
-    map_list.forEach(curr => str += curr+"<br>");
+    map_list.forEach(curr => str += " • "+curr+" <br>");
     return str;
 }
 

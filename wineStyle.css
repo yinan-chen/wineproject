@@ -182,12 +182,11 @@ tr{
 
 div.tooltip {
     position: absolute;
-    text-align: center;
-    width: 144px;
-    height: 64px;
-    padding: 8px 4px 4px;
-    font: 14px sans-serif;
-    background: #F9F1E4;
+    max-width: 200px;
+    max-height: 100px;
+    padding: 8px;
+    font-size: 16px;
+    background: #F7F3EB;
     border: 0px;
     border-radius: 4px;
     pointer-events: none;
