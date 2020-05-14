@@ -1,4 +1,8 @@
 /*body*/
+html {
+  scroll-padding-top: 75px;
+}
+
 body{
     font-size:18px;
     line-height: 25px;
@@ -25,9 +29,13 @@ body{
     color: #841935;
 }
 
-.section{
+section{
     margin-top: 40px;
     padding:40px 0;
+}
+
+.content-margin{
+     margin-top: 56px;
 }
 
 /*header*/
@@ -58,14 +66,13 @@ section#intro p span{
 
 section#intro img#btnToIntro{
    width: 32px;
-   margin-top: 56px;
    margin-left: 50%
 }
 
 
 /*Research*/
 #research{
-    display: none;
+    /*display: none;*/
 }
 
 section#research{
@@ -84,7 +91,7 @@ button#toTasteBtn{
 
 /*Flavor Profile*/
 #taste{
-    display: none;
+    /*display: none;*/
 }
 
 

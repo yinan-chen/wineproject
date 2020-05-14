@@ -24,23 +24,23 @@
         <a class="navbar-brand" href="#"><img src="img/logo.png" width="80%"></a>
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">Our Research</a>
+                <a class="nav-link js-scroll-trigger" href="#research">Our Research</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Taste Profile</a>
+                <a class="nav-link js-scroll-trigger" href="#taste">Taste Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Details</a>
+                <a class="nav-link js-scroll-trigger" href="#recommendation">Details</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Tips</a>
+                <a class="nav-link" href="#tips">Tips</a>
             </li>
         </ul>
     </div>
 </nav>
 
 <!--Intro Page-->
-<section class="section"  id="intro">
+<section id="intro">
     <div class="container">
         <h1 class="primary-title">A Guide to Wine Purchase</h1>
         <br>
@@ -68,12 +68,12 @@
                 <img src="img/intro.png" width="110%">
             </div>
         </div>
-        <img id="btnToIntro" src="img/down.png" onclick="showIntro()">
+        <a href="#research"><img class="content-margin" id="btnToIntro" src="img/down.png" onclick="showIntro()"></a>
     </div>
 </section>
 
 <!--Research-->
-<section class="section" id="research">
+<section id="research">
     <div class="container">
         <h1 class="primary-title-colored">Our Research</h1>
         <br>
@@ -84,13 +84,13 @@
                 <img src="img/research_viz1.png" width="90%">
             </div>
             <div class="col-6">
-                <p>
-                    Analyze of the change in drinking frequency across age showed that <b>the 21-29 group is the only significantly growing market segment</b>.
-                    Specifically, 47% of the 20s express drinking more wine than a couple years ago.<br><br>
+                <p style="padding-top: 2rem;">
+                    The change in wine drinking frequency showed that <b>the 21-29 group is the only significantly growing market segment</b>.
+                    47% of the 20s expressed “drinking more wine” than a couple years ago. As age grows, people tend to maintain the same frequencies and rather than drink more.
+                    <br><br>
 
-                    Since 21 is the legal drinking age in the U.S., it makes sense that 21-29 years old are new to the wine world,
-                    learning and exploring. In contrast, other age groups drinking frequencies are relatively stable.
-                    Thus we decided to target people in their 20s believing that <b>they have the strongest need to explore wines but with limited wine knowledge</b>.
+                    Since 21 is the legal drinking age in the US, it makes sense that 21-29 years old are new to the wine world to learn and explore.
+                    We decided to target the 21-29 years old, who <b>have the strongest demand to explore wines but limited wine knowledge</b>.
                 </p>
             </div>
         </div>
@@ -99,19 +99,19 @@
         <div class="row">
             <div class="col-6">
                 <p>
-                    Q: What does affordability mean for wine purchasers? <br><br>
+                    Q: What does affordability mean for wine purchasers ? <br><br>
 
-                    We found that wine cheaper than 20 dollars are the most popular among wine drinkers.
-                    <b>In fact, most people never buy wines over 20 dollars.</b>
-                    Thus, we filtered our wine dataset under 20 dollars, believing it is a standard for affordability in this project.
+                    <b>The majority of wine drinkers never bought wines priced over $30</b>, while wines under $30 are popular among drinkers.
+                    For the sake of affordability for people in their 20s who are presumably price sensitive, we decided to recommend wines under $30 from our dataset.
                 </p>
             </div>
             <div class="col-6">
                 <p>
-                    Q: What does affordability mean for wine purchasers? <br><br>
+                    Q: Are expensive wines better than cheaper (affordable) wines ?<br><br>
 
-                    Not necessarily. The data showed that the most expensive wine is not rated very high,
-                    while higher price does not necessarily guarantee better wines. In other words, <b>affordable wines can also be good wines</b>.
+                    Not necessarily. There is some positive correlation between wine prices and ratings, but higher price does not guarantee better wines.
+                    The most expensive wine ($3300) in the dataset is not rated high by wine connoisseurs. Given the huge variations at each price level,
+                    <b>affordable wines can also be good and sometimes better than expensive ones</b>.
                 </p>
             </div>
         </div>
@@ -125,20 +125,20 @@
             </div>
         </div>
         <div align="center">
-            <p style="margin-top: 56px;"><b>👇 Ready to explore wines based on your flavor ? 👇</b></p>
-            <button id="toTasteBtn" onclick="showTasteProfile()"><b>START</b></button>
+            <p class="content-margin"><b>👇 Ready to explore wines based on your flavor ? 👇</b></p>
+            <a href="#taste"><button id="toTasteBtn" onclick="showTasteProfile()"><b>START</b></button></a>
         </div>
     </div>
 </section>
 
 <!--Taste Profile-->
-<!--<section class="section" id="taste">-->
-   <!--<div class="container">-->
-       <!--<h1 class="primary-title">Taste Profile</h1>-->
-   <!--</div>-->
-<!--</section>-->
+<section class="section" id="flavor">
+   <div class="container">
+       <h1 class="primary-title">Taste Profile</h1>
+   </div>
+</section>
 
-<section class="section" id="taste">
+<section id="taste">
     <div class="container-fluid">
         <h3>Flavor Exploration</h3><br>
         <br>
@@ -174,7 +174,7 @@
 </section>
 
 <!--Recommendation-->
-<section class="section" id="recommendation">
+<section id="recommendation">
     <div class="container-fluid">
         <div id="recommend_title"></div>
         <div class="row">
@@ -183,8 +183,8 @@
     </div>
 </section>
 
-<!--Wine Label-->
-<section class="section" id="label">
+<!--Tips-->
+<section id="tips">
 
 </section>
 
@@ -204,7 +204,7 @@
 
     function showTasteProfile(){
         $("#taste").show();
-        $(".footer").show();
+        // $(".footer").show();
     }
 
     //const img_path = "http://localhost/wineproject/img/";
