@@ -86,16 +86,25 @@ nav#header.shrink .nav-link{
     padding-bottom: 20px;
 }
 
-nav#header.shrink .nav-item:hover, nav#header.shrink .nav-link.active{
-    /*background-color: #F9F1E4;*/
-}    
-
-nav#header.shrink .nav-link{
-    /*color: #F9F1E4;*/
-}
-
 nav#header.shrink .nav-link:hover, nav#header.shrink .nav-link.active{
     color: #841935;
+}
+
+/*initially disable all navtabs*/
+#researchNav{
+   display: none; 
+}
+
+#tasteNav{
+    display: none;
+}
+
+#detailsNav{
+    display: none;
+}
+
+#tipsNav{
+    display: none;
 }
 
 /*Intro Page*/

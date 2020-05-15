@@ -9,21 +9,27 @@ $(window).scroll(function() {
 
 //control section display
 function showIntro(){
+    $("#researchNav").show();
     $("#research").show();
 }
 
 function showTasteProfile(){
+    $("#tasteNav").show();
     $("#taste").show();
     $("#helper").show();
 }
 
 function showRestSections(){
+    $("#detailsNav").show();
+    $("#tipsNav").show();
     $("#details").show();
     $("#tips").show();
     $(".footer").show();
 }
 
 function hideRestSections(){
+    $("#detailsNav").hide();
+    $("#tipsNav").hide();
     $("#details").hide();
     $("#tips").hide();
     $(".footer").hide();
