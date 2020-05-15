@@ -30,5 +30,9 @@ const definitions = {
 	"Red":definitions_red
 };
 
+const scale = 5;
+
+const variety_properties = ["Body","Acidity","Sweetness","Alcohol"];
+
 //reference: https://winefolly.com/grapes/
 const alcohol_scales = ["Under 10% ABV","10-11.5% ABV","11.5-13.5% ABV","13.5-15% ABV","Over 15% ABV"];

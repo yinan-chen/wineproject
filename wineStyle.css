@@ -165,7 +165,7 @@ button#varietyBtn{
 
 
 /*Details*/
-#details{
+#details,#recommendation{
     /*display: none;*/
     background-color: #F7F3EB;
 }
@@ -174,7 +174,7 @@ button#varietyBtn{
    width:40px; 
 }
 
-#properties tr{
+div.properties tr{
     height:3rem;
 }
 
@@ -206,7 +206,7 @@ button#varietyBtn{
     border-bottom: 1px solid #BDBDBD;
 }
 
-#topRating td, #topRating p{
+.topRating td, .topRating p{
     font-size: 16px;
 }
 
@@ -290,7 +290,7 @@ div.tooltip {
 }
 
 /*Details: multiple varieties vertical tab groups*/
-#varieties.list-group a.list-group-item{
+.varieties.list-group a.list-group-item{
     text-align: center;
     font-size:16px;
     font-weight:400;
@@ -300,12 +300,12 @@ div.tooltip {
     border-right:2px solid #841935;
 }
 
-#varieties.list-group a.list-group-item:hover{
+.varieties.list-group a.list-group-item:hover{
     font-weight:600;
     color:#841935;
 }
 
-#varieties.list-group a.list-group-item.active{
+.varieties.list-group a.list-group-item.active{
     font-size:18px;
     font-weight:600;
     color:#841935;
