@@ -94,8 +94,8 @@ function getFlavorViz(data,y,x){
         })
         .on("click",function(d){
             showRestSections();
-            $("#recommend_title").html("<h1 class='primary-title-colored' >The variety you selected</h1>");
-            $("#details").html(getClickStr(scatterMap[[d[y],d[x]]]));
+            $("#details_title").html("<h1 class='primary-title-colored' >The variety you selected</h1>");
+            // $("#details_content").html(getClickStr(scatterMap[[d[y],d[x]]]));
         });
 }
 

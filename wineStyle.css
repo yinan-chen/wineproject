@@ -29,6 +29,10 @@ body{
     color: #841935;
 }
 
+.tertiaru-title{
+    font-weight: 500;
+}
+
 .label{
     font-size:16px;
 }
@@ -38,7 +42,7 @@ section{
 }
 
 .content-margin{
-     margin-top: 56px;
+     margin-top: 3rem;
 }
 
 /*header*/
@@ -95,14 +99,15 @@ nav#header.shrink .nav-link:hover, nav#header.shrink .nav-link.active{
 }
 
 /*Intro Page*/
-section#intro{
-    margin-top: 112px;
+#intro{
+    margin-top: 120px;
 }
-section#intro p span{
+
+#intro p span{
     font-weight: bolder;
 }
 
-section#intro img#btnToIntro{
+#intro img#btnToIntro{
    width: 32px;
    margin-left: 50%
 }
@@ -113,7 +118,7 @@ section#intro img#btnToIntro{
     display: none;
 }
 
-section#research{
+#research{
     background-color: #F7F3EB;
 }
 
@@ -159,29 +164,54 @@ button#varietyBtn{
 
 
 
-/*Recommendation*/
-#recommendation{
-    display: none;
-}
-
-section#recommendation{
+/*Details*/
+#details{
+    /*display: none;*/
     background-color: #F7F3EB;
 }
 
-tr{
-    height:50px;
+#details img{
+   width:40px; 
 }
 
-.carousel-indicators{
-    bottom: -20px;
+#properties tr{
+    height:3rem;
 }
 
-.carousel-indicators li{
-    background-color: darkgray;
+.padding-property-td{
+    padding-left: 3rem;
 }
 
-.carousel-indicators .active{
-    background-color: black;
+.padding-accordion{
+    margin-top: 0.5rem;
+}
+
+#details button.btn{
+    display: block;
+    width:100%;
+    padding-left: 0;
+    font-size:18px;
+    font-weight: 600;
+    color: #841935;
+    text-align: left;
+    background-color:#F7F3EB;
+    border-bottom: 2px solid #841935;
+    border-radius: 0;
+}
+
+#details button.btn.collapsed{
+    font-size:16px;
+    font-weight: 400;
+    color:black;
+    border-bottom: 1px solid #BDBDBD;
+}
+
+#topRating td, #topRating p{
+    font-size: 16px;
+}
+
+.padding-rating-td{
+    padding-left: 1rem;
 }
 
 /*tips*/
@@ -215,7 +245,7 @@ tr{
     color: #F9F1E4;
 }
 
-/*Viz*/
+/*Flavor: Viz*/
 
 .grid path {
     stroke-width: 0;
@@ -227,7 +257,7 @@ tr{
     shape-rendering: crispEdges;
 }
 
-/*tooltip*/
+/*Flavor: tooltip*/
 div.tooltip {
     position: absolute;
     max-width: 200px;
@@ -257,6 +287,32 @@ div.tooltip {
 }
 .tippy-box[data-theme~='wine'][data-placement^='right'] > .tippy-arrow::before {
   border-right-color: #F7F3EB;
+}
+
+/*Details: multiple varieties vertical tab groups*/
+#varieties.list-group a.list-group-item{
+    text-align: center;
+    font-size:16px;
+    font-weight:400;
+    background-color: #F7F3EB;
+    border-radius: 0;
+    border:none;
+    border-right:2px solid #841935;
+}
+
+#varieties.list-group a.list-group-item:hover{
+    font-weight:600;
+    color:#841935;
+}
+
+#varieties.list-group a.list-group-item.active{
+    font-size:18px;
+    font-weight:600;
+    color:#841935;
+    border:none;
+    border-top: 2px solid #841935;
+    border-left: 2px solid #841935;
+    border-bottom: 2px solid #841935;
 }
 
 

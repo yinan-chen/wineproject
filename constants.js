@@ -1,8 +1,8 @@
 //control Taste Profile User Interactions
-// const data_path = "data/";
-// const img_path = "http://localhost/wineproject/img/";
-const data_path = "https://yinan-chen.github.io/wineproject/data/";
-const img_path = "https://yinan-chen.github.io/wineproject/img/";
+const data_path = "data/";
+const img_path = "http://localhost/wineproject/img/";
+// const data_path = "https://yinan-chen.github.io/wineproject/data/";
+// const img_path = "https://yinan-chen.github.io/wineproject/img/";
 const flavors = {
     "White": ["Citrus Fruit","Stone Fruit","Tropical Fruit","Floral","Herbal","Creaminess"],
     "Red":["Red Fruit","Black Fruit","Floral","Herbal","Cooking Spice","Leather"]
@@ -29,3 +29,6 @@ const definitions = {
 	"White":definitions_white,
 	"Red":definitions_red
 };
+
+//reference: https://winefolly.com/grapes/
+const alcohol_scales = ["Under 10% ABV","10-11.5% ABV","11.5-13.5% ABV","13.5-15% ABV","Over 15% ABV"];
