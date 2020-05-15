@@ -153,21 +153,26 @@ function bindFlavorClickEvent(data,rating_data){
 function bindDropdownClickEvent(){
     $(".dropdown-item").click(function(){
         let variety = $(this).text();
+        //update dropdown text
         $("#varietyBtn").text(variety+" ");
         console.log(variety);
 
-        //update scatter image
+        //deselect prev reference 
         if(flavor_reference !== ""){
             let pre = $("#"+getVarietyId(flavor_reference));
             pre.attr("href","img/icon/grape.png");
             pre.attr("opacity","0.6");
         }
-        let variety_id = getVarietyId(variety);
-        let reference = $("#"+variety_id);
-        reference.attr("href","img/icon/grape_reference.png");
-        reference.attr("opacity","2.0");
-        flavor_reference = variety;
 
+        if(variety == "Choose one familiar wine variety"){
+            flavor_reference == "";
+        }else{
+            let variety_id = getVarietyId(variety);
+            let reference = $("#"+variety_id);
+            reference.attr("href","img/icon/grape_reference.png");
+            reference.attr("opacity","2.0");
+            flavor_reference = variety;
+        }
     });
 }
 
@@ -212,8 +217,11 @@ function getVarietyDropDownHtmlStr(varieties){
                 "</button>" +
               "<div class='dropdown-menu' aria-labelledby='varietyBtn'>";
 
+    //add an option to deselect reference
+     htmlStr += "<button class='dropdown-item' type='button'>"+"Choose one familiar wine variety"+"</button>"
+
     varieties.forEach(variety => {
-       htmlStr += "<button class='dropdown-item' type='button'>"+ variety +"</button>"
+       htmlStr += "<button class='dropdown-item' type='button'>"+ variety +"</button>";
     });
 
     return htmlStr += "</div></div>";

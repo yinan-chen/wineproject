@@ -19,8 +19,8 @@ function getMultipleVarietiesDetails(data,map_list,rating_data){
     for(i = 0; i < map_list.length; i++){
         let name = map_list[i];
         let id = getVarietyId(name);
-        htmlStr += i === 0? "<a class='list-group-item list-group-item-action active' id='list-"+id+"-list' href='#list-"+id+"' data-toggle='list'  role='tab'>"+name+"</a>":
-                        "<a class='list-group-item list-group-item-action' id='list-"+id+"-list' href='#list-"+id+"' data-toggle='list'  role='tab'>"+name+"</a>";
+        htmlStr += i === 0? "<a class='list-group-item list-group-item-action multi active' id='list-"+id+"-list' href='#list-"+id+"' data-toggle='list'  role='tab'>"+name+"</a>":
+                        "<a class='list-group-item list-group-item-action multi' id='list-"+id+"-list' href='#list-"+id+"' data-toggle='list'  role='tab'>"+name+"</a>";
     }
     htmlStr += "</div>" +
             "</div>" +
@@ -39,7 +39,18 @@ function getMultipleVarietiesDetails(data,map_list,rating_data){
         htmlStr += "</div>";
     }
     htmlStr += "</div></div></div>";
+
     return htmlStr;
+}
+
+function bindMultipleVarietiesClickEvent(data,wineType,map_list){
+    $(".multi").click(function(){
+        map_list.forEach(variety_name => {
+           let id = getVarietyId(variety_name);
+           $("#"+id+"_radarChart").html("");
+        });
+        setRadarChart(data,wineType,$(this).text());
+    })
 }
 
 function getSingleVarietyDetails(single,variety,rating_data){
@@ -146,24 +157,41 @@ function getTopRatingHtmlStr(variety_name,id,rating_data){
 //////////////Radar Chart//////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function setRadarChart(data,wineType,map_list){
-  map_list.forEach(variety_name => {
+function setRadarChart(data,wineType,variety_name){
     let id = "#"+getVarietyId(variety_name)+"_radarChart";
     let variety = data.filter(d => d.Name === variety_name)[0];
     let radar_data;
 
     if(flavor_reference !== "" && flavor_reference !== variety_name){
-      //with reference
-      let reference = data.filter(d => d.Name === flavor_reference)[0];
-      radar_data = [radarDataFormatter(wineType,reference,true),radarDataFormatter(wineType,variety,false)];
-      generateRadarChart(radar_data,id,true);
+        //with reference
+        let reference = data.filter(d => d.Name === flavor_reference)[0];
+        radar_data = [radarDataFormatter(wineType,reference,true),radarDataFormatter(wineType,variety,false)];
+        generateRadarChart(radar_data,id,true);
     }else{
-      //single
-      radar_data = [radarDataFormatter(wineType,variety,false)];
-      generateRadarChart(radar_data,id,false);
+        //single
+        radar_data = [radarDataFormatter(wineType,variety,false)];
+        generateRadarChart(radar_data,id,false);
     }
-  });
 }
+
+// function setRadarChart(data,wineType,map_list){
+//   map_list.forEach(variety_name => {
+//     let id = "#"+getVarietyId(variety_name)+"_radarChart";
+//     let variety = data.filter(d => d.Name === variety_name)[0];
+//     let radar_data;
+//
+//     if(flavor_reference !== "" && flavor_reference !== variety_name){
+//       //with reference
+//       let reference = data.filter(d => d.Name === flavor_reference)[0];
+//       radar_data = [radarDataFormatter(wineType,reference,true),radarDataFormatter(wineType,variety,false)];
+//       generateRadarChart(radar_data,id,true);
+//     }else{
+//       //single
+//       radar_data = [radarDataFormatter(wineType,variety,false)];
+//       generateRadarChart(radar_data,id,false);
+//     }
+//   });
+// }
 
 /*
   Radar Chart credit to: http://bl.ocks.org/Kuerzibe/338052519b1d270b9cd003e0fbfb712e

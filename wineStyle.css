@@ -166,7 +166,7 @@ button#varietyBtn{
 
 /*Details*/
 #details,#recommendation{
-    /*display: none;*/
+    display: none;
     background-color: #F7F3EB;
 }
 

@@ -98,7 +98,10 @@ function getFlavorViz(data,wineType,y,x,rating_data){
             let map_list = scatterMap[[d[y],d[x]]];
             $("#details_content").html(getClickStr(data,map_list,rating_data));
             //call to generate radar charts
-            setRadarChart(data,wineType,map_list);
+            setRadarChart(data,wineType,map_list[0]);
+            //bind multi with onclick event to generate radar chart
+            if(map_list.length > 1)
+                bindMultipleVarietiesClickEvent(data,wineType,map_list);
         });
 }
 
