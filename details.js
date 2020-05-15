@@ -7,13 +7,13 @@
 //////////////////////// Set-Up //////////////////////////////
 //////////////////////////////////////////////////////////////
 
-var margin = { top: 8, right: 100, bottom: 8, left: 60 };
+var radar_margin = { top: 8, right: 100, bottom: 8, left: 60 };
 
 //////////////////////////////////////////////////////////////
 ////////////////////////// Data //////////////////////////////
 //////////////////////////////////////////////////////////////
 
-var data = [
+var radar_data = [
   { name: 'Allocated budget',
     axes: [
       {axis: 'Sales', value: 0},
@@ -41,7 +41,7 @@ var data = [
 var radarChartOptions = {
   w: 240,
   h: 300,
-  margin: margin,
+  margin: radar_margin,
   maxValue: 5,
   levels: 6,
   roundStrokes: false,
@@ -51,4 +51,4 @@ var radarChartOptions = {
 };
 
 // Draw the chart, get a reference the created svg element :
-let svg_radar2 = RadarChart("#radarChart", data, radarChartOptions);
+let svg_radar2 = RadarChart("#radarChart", radar_data, radarChartOptions);

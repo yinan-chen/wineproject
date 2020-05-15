@@ -1,6 +1,6 @@
 //flavor viz - d3 scatterplot
 
-var margin = {top:50,bottom:50,left:50,right:50};
+var flavor_margin = {top:50,bottom:50,left:50,right:50};
 var size = 350;
 var imageSize = 40;
 
@@ -15,10 +15,10 @@ var flavor_y = d3.scaleLinear()
 function getFlavorViz(data,y,x){
     var flavor_svg = d3.select("#flavor_viz")
         .append("svg")
-        .attr("width",size + margin.left + margin.right)
-        .attr("height",size + margin.top + margin.bottom)
+        .attr("width",size + flavor_margin.left + flavor_margin.right)
+        .attr("height",size + flavor_margin.top + flavor_margin.bottom)
         .append("g")
-        .attr("transform","translate(" + margin.left + "," + margin.top + ")");
+        .attr("transform","translate(" + flavor_margin.left + "," + flavor_margin.top + ")");
 
     //tooltip
     var div = d3.select("body").append("div")
@@ -36,7 +36,7 @@ function getFlavorViz(data,y,x){
         .attr("class","label")
         .attr("transform", "rotate(-90)")
         .attr("x",0 - (size / 2))
-        .attr("y", 0 - margin.left)
+        .attr("y", 0 - flavor_margin.left)
         .attr("dy", "1em")
         .style("text-anchor","middle")
         .text(y);
@@ -49,7 +49,7 @@ function getFlavorViz(data,y,x){
         .attr("dy","1em");
     flavor_svg.append("text")
         .attr("class","label")
-        .attr("transform","translate("+size/2+","+(size+margin.bottom-5)+")")
+        .attr("transform","translate("+size/2+","+(size+flavor_margin.bottom-5)+")")
         .style("text-anchor","middle")
         .text(x);
 
