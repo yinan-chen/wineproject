@@ -23,6 +23,12 @@ function showRestSections(){
     $(".footer").show();
 }
 
+function hideRestSections(){
+    $("#details").hide();
+    $("#tips").hide();
+    $(".footer").hide();
+}
+
 //Taste Profile interaction
 var wine = "";
 var flavor_select = ["",""];
@@ -44,6 +50,7 @@ d3.csv(data_path+"rating_data.csv").then(function(rating_data){
             flavor_count = 0;
             flavor_reference = "";
             cleanFlavorViz();
+            hideRestSections();
         }
         //update with selected wine type
         wine = curr.id;
@@ -120,6 +127,7 @@ function bindFlavorClickEvent(data,rating_data){
             //clean
             error.html("");
             cleanFlavorViz();
+            hideRestSections();
             //show helper
             $("#helper").show();
             //deselect the selected one
@@ -163,7 +171,8 @@ function bindDropdownClickEvent(){
             pre.attr("href","img/icon/grape.png");
             pre.attr("opacity","0.6");
         }
-
+        hideRestSections();
+        
         if(variety == "Choose one familiar wine variety"){
             flavor_reference == "";
         }else{
