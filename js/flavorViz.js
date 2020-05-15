@@ -73,6 +73,8 @@ function getFlavorViz(data,wineType,y,x,rating_data){
         .selectAll("dots")
         .data(data)
         .enter()
+        .append("a")
+        .attr("href","#details")
         .append("image")
         .attr("id", d => getVarietyId(d.Name))
         .attr("y", d => flavor_y(d[y])-imageSize/2)
