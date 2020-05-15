@@ -177,10 +177,11 @@ function bindDropdownClickEvent(){
             pre.attr("href","img/icon/grape.png");
             pre.attr("opacity","0.6");
         }
+        
         hideRestSections();
         
         if(variety == "Choose one familiar wine variety"){
-            flavor_reference == "";
+            flavor_reference = "";
         }else{
             let variety_id = getVarietyId(variety);
             let reference = $("#"+variety_id);
