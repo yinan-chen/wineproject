@@ -29,7 +29,9 @@ var flavor_select = ["",""];
 var flavor_count = 0;
 var flavor_reference = "";
 
-$(".wine").click(function(e){
+d3.csv(data_path+"rating_data.csv").then(function(rating_data){
+    console.log("rating dataset loaded successfully!");
+    $(".wine").click(function(e){
     let curr = e.target;
 
     if(wine !== curr.id){
@@ -52,16 +54,16 @@ $(".wine").click(function(e){
         //read data
         d3.csv(data_path+wine+".csv").then(function(data){
             console.log(wine+" dataset loaded successfully!");
-            console.log(data[0]);
             //display flavor options based on selected wine type
             $("#flavor_step2").show();
             $("#flavor_label_step2").html("<p class='step-icon-align'>Choose you <b>TWO</b> favorite flavors: </p>");
-            set_flavor_options(curr.id,data);
+            set_flavor_options(curr.id,data,rating_data);
         });
     }
+});          
 });
 
-function set_flavor_options(type,data){
+function set_flavor_options(type,data,rating_data){
     let options = flavors[type];
     let htmlStr = "";
 
@@ -82,7 +84,7 @@ function set_flavor_options(type,data){
     });
     $("#flavor_choices").html(htmlStr);
     bindFlavorHoverEvent(type);
-    bindFlavorClickEvent(data);
+    bindFlavorClickEvent(data,rating_data);
 }
 
 function bindFlavorHoverEvent(type){
@@ -100,7 +102,7 @@ function bindFlavorHoverEvent(type){
     });
 }
 
-function bindFlavorClickEvent(data){
+function bindFlavorClickEvent(data,rating_data){
     $(".flavor").click(function(e){
         let curr = e.target;
         let error =  $("#errorAlert");
@@ -141,7 +143,7 @@ function bindFlavorClickEvent(data){
             //viz: use alphabetical order to set y/x with flavor names
             let flavors = [$("#"+flavor_select[0]).attr("alt"),$("#"+flavor_select[1]).attr("alt")];
             flavors.sort();
-            getFlavorViz(data,wine,flavors[0],flavors[1]);
+            getFlavorViz(data,wine,flavors[0],flavors[1],rating_data);
             $("#helper").hide();
         }
 

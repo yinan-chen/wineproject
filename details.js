@@ -3,33 +3,48 @@
 //////////////Detail Sections HTML//////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function getClickStr(data,map_list){
+function getClickStr(data,map_list,rating_data){
     if(map_list.length === 1){
-        return getSingleVareityDetails(true,data.filter(d => d.Name === map_list[0])[0]);
+        return getSingleVarietyDetails(true,data.filter(d => d.Name === map_list[0])[0],rating_data);
     }else{
-        return "<div id='multi' class='carousel slide' data-ride='carousel'>" +
-                    "<ul class='carousel-indicators'>" +
-                        "<li data-target='#multi' data-slide-to='0' class='active'></li>" +
-                        "<li data-target='#multi' data-slide-to='1'></li>" +
-                        "<li data-target='#multi' data-slide-to='2'></li>" +
-                    "</ul>" +
-                    "<div class='carousel-inner'>" +
-                        "<div class='carousel-item active'>" +
-                            "<img src='img/detail/placeholder1.png' width='80%'>" +
-                        "</div>" +
-                        "<div class='carousel-item'>" +
-                            "<img src='img/detail/placeholder2.png' width='80%'>" +
-                        "</div>" +
-                        "<div class='carousel-item'>" +
-                            "<img src='img/detail/placeholder3.png' width='80%'>" +
-                        "</div>" +
-                    "</div>" +
-                "</div>";
+        return getMultipleVarietiesDetails(data,map_list,rating_data);
     }
 }
 
-function getSingleVareityDetails(single,variety){
-    let id = getVarietyId(variety.Name);
+function getMultipleVarietiesDetails(data,map_list,rating_data){
+    let htmlStr = "<div class='row'>" +
+                        "<div class='col-3'>" +
+                            "<div class='list-group varieties' role='tablist'>";
+    let i;
+    for(i = 0; i < map_list.length; i++){
+        let name = map_list[i];
+        let id = getVarietyId(name);
+        htmlStr += i === 0? "<a class='list-group-item list-group-item-action active' id='list-"+id+"-list' href='#list-"+id+"' data-toggle='list'  role='tab'>"+name+"</a>":
+                        "<a class='list-group-item list-group-item-action' id='list-"+id+"-list' href='#list-"+id+"' data-toggle='list'  role='tab'>"+name+"</a>";
+    }
+    htmlStr += "</div>" +
+            "</div>" +
+            "<div class='col-9'>" +
+                "<div class='tab-content'>";
+    for(i = 0; i < map_list.length; i++){
+        let name = map_list[i];
+        let id = getVarietyId(name);
+        let variety = data.filter(d => d.Name === name)[0];
+
+        //tab
+        htmlStr += i === 0? "<div class='tab-pane fade show active' id='list-"+id+"' role='tabpanel' aria-labelledby='list-"+id+"-list'>":
+                            "<div class='tab-pane fade' id='list-"+id+"' role='tabpanel' aria-labelledby='list-"+id+"-list'>";
+        //tab content
+        htmlStr += getSingleVarietyDetails(false,variety,rating_data);
+        htmlStr += "</div>";
+    }
+    htmlStr += "</div></div></div>";
+    return htmlStr;
+}
+
+function getSingleVarietyDetails(single,variety,rating_data){
+    let variety_name = variety.Name;
+    let id = getVarietyId(variety_name);
     let htmlStr = "<div class='row'>";
 
     //property section
@@ -37,7 +52,9 @@ function getSingleVareityDetails(single,variety){
     htmlStr += getPropertyHtmlStr(variety);
     htmlStr += "</div><div class='col-5' id='"+id+"_radarChart'></div></div>";
     //top rating section
-    // htmlStr += single? "<div class='row'><div class='col-10 offset-1'>" : "<div class='row'><div class='col-12'>"
+    htmlStr += single? "<div class='row'><div class='col-10 offset-1'>" : "<div class='row'><div class='col-12'>";
+    htmlStr += getTopRatingHtmlStr(variety_name,id,rating_data);
+    htmlStr += "</div></div>";
 
     return htmlStr;
 }
@@ -84,9 +101,44 @@ function getPropertyHtmlStr(variety){
 }
 
 //get topRating section htmlStr
-function getTopRatingHtmlStr(variety){
-    let name = vareity.Name;
-    let id = getVarietyId(name);
+function getTopRatingHtmlStr(variety_name,id,rating_data){
+    let tops = rating_data.filter(d => d.variety === variety_name);
+
+    //top list headline
+    let htmlStr = "<h4 class='tertiary-title'>The Top 5 You Should Try (Based on ratings):</h4>";
+
+    //top5 content
+    htmlStr += "<div class='topRating' id='"+id+"_tops' style='margin-top: 1rem;'>"; 
+
+    //each top information
+    let i;
+    for(i = 1; i <= tops.length; i++){
+      let top = tops[i-1];
+      //button
+      htmlStr += i === 1? "<button class='btn' data-toggle='collapse' data-target='#"+id+"_top"+i+"' aria-expanded='true' aria-controls='"+id+"_top"+i+"'>" : 
+                        "<button class='btn collapsed' data-toggle='collapse' data-target='#"+id+"_top"+i+"' aria-expanded='true' aria-controls='"+id+"_top"+i+"'>"
+      htmlStr += i+". "+top.title+"</button>";   
+      //content
+      htmlStr += i === 1? "<div id='"+id+"_top"+i+"' class='collapse show' data-parent='#"+id+"_tops'>" : "<div id='"+id+"_top"+i+"' class='collapse' data-parent='#"+id+"_tops'>";
+      htmlStr += "<div class='row padding-accordion'>"+
+                    "<div class='col-5'>"+
+                        "<table>"+
+                            "<tr><td>Rating:</td><td class='padding-rating-td'>"+top.points+"</td></tr>"+
+                            "<tr><td>Price:</td><td class='padding-rating-td'>$"+top.price+"</td></tr>"+
+                            "<tr><td>Origin:</td><td class='padding-rating-td'>"+top.province+", "+top.country+"</td></tr>"+
+                            "<tr><td>Winery:</td><td class='padding-rating-td'>"+top.winery+"</td></tr>"+
+                        "</table>"+
+                    "</div>"+
+                    "<div class='col-7'>"+
+                        "<p>"+
+                            "Description: <br>"+top.description+
+                        "</p>"+
+                    "</div>"+
+                "</div>"+
+            "</div>";
+    };      
+    htmlStr += "</div>";
+    return htmlStr; 
 }
 
 
@@ -95,12 +147,12 @@ function getTopRatingHtmlStr(variety){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function setRadarChart(data,wineType,map_list){
-  map_list.forEach(name => {
-    let id = "#"+getVarietyId(name)+"_radarChart";
-    let variety = data.filter(d => d.Name === name)[0];
+  map_list.forEach(variety_name => {
+    let id = "#"+getVarietyId(variety_name)+"_radarChart";
+    let variety = data.filter(d => d.Name === variety_name)[0];
     let radar_data;
 
-    if(flavor_reference !== "" && flavor_reference !== name){
+    if(flavor_reference !== "" && flavor_reference !== variety_name){
       //with reference
       let reference = data.filter(d => d.Name === flavor_reference)[0];
       radar_data = [radarDataFormatter(wineType,reference,true),radarDataFormatter(wineType,variety,false)];

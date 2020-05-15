@@ -206,6 +206,10 @@ div.properties tr{
     border-bottom: 1px solid #BDBDBD;
 }
 
+#details button.btn:focus{
+    box-shadow: none;
+}
+
 .topRating td, .topRating p{
     font-size: 16px;
 }
@@ -261,7 +265,7 @@ div.properties tr{
 div.tooltip {
     position: absolute;
     max-width: 200px;
-    max-height: 100px;
+    max-height: 120px;
     padding: 8px;
     font-size: 16px;
     background: #F7F3EB;

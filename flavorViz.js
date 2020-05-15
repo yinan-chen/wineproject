@@ -12,7 +12,7 @@ var flavor_y = d3.scaleLinear()
     .domain([0,5])
     .range([size,0]);
 
-function getFlavorViz(data,wineType,y,x){
+function getFlavorViz(data,wineType,y,x,rating_data){
     var flavor_svg = d3.select("#flavor_viz")
         .append("svg")
         .attr("width",size + flavor_margin.left + flavor_margin.right)
@@ -96,7 +96,7 @@ function getFlavorViz(data,wineType,y,x){
             showRestSections();
             $("#details_title").html("<h1 class='primary-title-colored'>The variety you selected</h1>");
             let map_list = scatterMap[[d[y],d[x]]];
-            $("#details_content").html(getClickStr(data,map_list));
+            $("#details_content").html(getClickStr(data,map_list,rating_data));
             //call to generate radar charts
             setRadarChart(data,wineType,map_list);
         });
