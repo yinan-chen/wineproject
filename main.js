@@ -141,7 +141,7 @@ function bindFlavorClickEvent(data){
             //viz: use alphabetical order to set y/x with flavor names
             let flavors = [$("#"+flavor_select[0]).attr("alt"),$("#"+flavor_select[1]).attr("alt")];
             flavors.sort();
-            getFlavorViz(data,flavors[0],flavors[1]);
+            getFlavorViz(data,wine,flavors[0],flavors[1]);
             $("#helper").hide();
         }
 

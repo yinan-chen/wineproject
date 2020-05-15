@@ -329,5 +329,4 @@ const RadarChart = function RadarChart(parent_selector, data, options) {
 		  .attr("fill", "#737373")
 		  .text(d => d);
 	}
-	return svg;
 }
